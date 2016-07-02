@@ -1,0 +1,4 @@
+// This file was generated based on /usr/local/share/uno/Packages/UnoCore/0.31.1/Targets/Android/UniEconomy/settings.gradle.
+// WARNING: Changes might be lost if you edit this file directly.
+
+include ':app'

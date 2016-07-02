@@ -1,0 +1,4 @@
+directory jni:include:/usr/local/share/uno/Packages/Fuse.Scripting.V8/0.31.5:/usr/local/share/uno/Packages/UnoCore/0.31.1/prebuilt/Android/include:/platforms/android-19/arch-arm/usr/include:/sources/cxx-stl/stlport/stlport:/sources/cxx-stl/gabi++/include
+set solib-search-path .uno:/sources/cxx-stl/stlport/libs/armeabi-v7a:/usr/local/share/uno/Packages/Fuse.Scripting.V8/0.31.5/lib/Android:/usr/local/share/uno/Packages/UnoCore/0.31.1/prebuilt/Android/lib/armeabi-v7a
+sharedlibrary
+set auto-solib-add on

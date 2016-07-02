@@ -1,0 +1,95 @@
+<App>
+	<JavaScript File="LoginView.js" />
+
+	<Panel>
+
+		<Fuse.iOS.StatusBarConfig Style="Light" />
+		<DataBinding Target="pages.Active" Key="page" />
+
+		<!-- Company select -->
+		<UserEvent Name="ToggleLoggedIn" />
+		<Panel ux:Name="MainView" Opacity="0" IsEnabled="false">
+			<DockPanel>
+				<PageControl ux:Name="pages">
+		            <Page ux:Name="companypage" Background="#0082c0">
+						<CompanySelect />
+		            </Page>
+		            <Page ux:Name="somethingpage" Background="#fff">
+		            	<SomethingMore />
+		            </Page>
+	       		</PageControl>
+    		</DockPanel>
+		</Panel>
+
+		<WhileTrue ux:Name="loading" Value="{logedin}">
+			<Change changeWidth.Value="true" DelayBack="0"/>
+			<Change loadCircle.Value="true" DelayBack="0"/>
+
+			<Change scaleAndFade.Value="true" Delay="1.5" DelayBack="0"/>
+			<Change showLoggedIn.Value="true" Delay="1.7" />
+		</WhileTrue>
+		<WhileTrue ux:Name="changeWidth">
+			<Change rectNormalScale.Width="60" Duration=".5" DurationBack="0" Easing="CircularInOut"/>
+		</WhileTrue>
+		<WhileTrue ux:Name="loadCircle">
+			<Change text.Opacity="0" Duration="0.2" DurationBack="0"/>
+			<Change loadingCircle.Opacity="1" Duration="0.3" Delay="0.2" DelayBack="0" DurationBack="0"/>
+			<Spin Target="loadingCircle" Frequency="2"/>
+			<Cycle Target="loadingCircle.LengthAngleDegrees" Low="30" High="300" Frequency="0.7" />
+		</WhileTrue>
+		<WhileTrue ux:Name="scaleAndFade">
+			<Change loadingCirclePanel.Opacity="0" Duration="0.1" />
+			<Change loadingButton.Opacity="1" Duration="0.01" />
+			<Change rectNormalScale.Opacity="0" Duration="0.01" />
+
+			<Change loginButtonScaling.Factor="1" Delay="0.01" Duration="0.7" DurationBack="0" Easing="ExponentialInOut"/>
+		</WhileTrue>
+		<WhileTrue ux:Name="showLoggedIn">
+			<Change MainView.Opacity="1" Delay="0.1" Duration="0.65" DurationBack="0.35" DelayBack="0.3" Easing="CubicInOut"/>
+			<RaiseUserEvent Name="ToggleLoggedIn" />
+			<Change MainView.IsEnabled="true" />
+			<Set pages.Active="companypage" />
+		</WhileTrue>
+
+		<!-- Log in view -->
+		<Grid ux:Name="LoginView" Rows="1*,auto,1*" Padding="40,0">
+			<Rectangle Layer="Background">
+				<Image File="Assets/modalen.jpg" StretchMode="UniformToFill" Opacity="0.8">
+					<Blur />
+				</Image>
+			</Rectangle>
+
+			<Panel Row="2" Width="150" Height="60" Clicked="{login}">		
+				<Text ux:Name="text" Alignment="Center" Value="Logg inn" FontSize="18" TextColor="#fff"/>
+				<Panel ux:Name="loadingCirclePanel">
+					<Circle ux:Name="loadingCircle" Width="70%" Height="73%" Opacity="0" StartAngleDegrees="0" LengthAngleDegrees="90">
+						<Stroke Width="1" Brush="#fff" />
+					</Circle>
+				</Panel>
+				<Clicked>
+					<Toggle Target="loading" />
+				</Clicked>
+				<Rectangle ux:Name="rectNormalScale" CornerRadius="30" Fill="#0082c0" Width="300" Height="60"/>
+				<Panel ux:Name="loadingButton" Opacity="0" Width="1320" Height="1320" Alignment="Center">
+					<Circle Fill="#0082c0"/>
+					<Scaling ux:Name="loginButtonScaling" Factor="0.04545" />
+				</Panel>
+			</Panel>
+
+			<Image Row="0" File="Assets/ue.png" Width="150"/>
+
+			<Grid Row="1" Padding="0,20" RowCount="2" Columns="auto,1*" Height="160">
+				<Image     Row="0" Column="0" File="Assets/user_icon.png" Width="20" Height="20" Margin="10,0,30,0" Alignment="Left"/>
+				<TextInput Value="{username}" Row="0" Column="1" PlaceholderText="Brukernavn" PlaceholderColor="#999" TextColor="#fff" Alignment="CenterLeft"/>
+				<Rectangle Row="0" Column="0" Alignment="Bottom" ColumnSpan="2" Height="1" Fill="#fff"/>
+
+				<Image     Row="1" Column="0" File="Assets/password_icon.png" Width="20" Height="20" Margin="10,0,30,0" Alignment="Left"/>
+				<TextInput Value="{password}" Row="1" Column="1" PlaceholderText="Passord" PlaceholderColor="#999" TextColor="#fff" Alignment="CenterLeft"/>
+				<Rectangle Row="1" Column="0" Alignment="Bottom" ColumnSpan="2" Height="1" Fill="#fff"/>
+			</Grid>
+
+		</Grid>
+
+	</Panel>
+
+</App>
