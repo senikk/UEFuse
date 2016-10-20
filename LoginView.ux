@@ -1,5 +1,6 @@
 <App>
 	<JavaScript File="LoginView.js" />
+	<JavaScript File="Timeline.js" />
 
 	<Panel>
 
@@ -11,13 +12,13 @@
 		<Panel ux:Name="MainView" Opacity="0" IsEnabled="false">
 			<DockPanel>
 				<PageControl ux:Name="pages">
-		            <Page ux:Name="companypage" Background="#0082c0">
+		            <Page ux:Name="companyselect" Background="#0082c0">
 						<CompanySelect />
 		            </Page>
-		            <Page ux:Name="somethingpage" Background="#fff">
-		            	<SomethingMore />
+		            <Page ux:Name="timeline" Background="#dddddd">
+		            	<EconomyTimeline />
 		            </Page>
-	       		</PageControl>
+		   		</PageControl>
     		</DockPanel>
 		</Panel>
 
@@ -48,7 +49,7 @@
 			<Change MainView.Opacity="1" Delay="0.1" Duration="0.65" DurationBack="0.35" DelayBack="0.3" Easing="CubicInOut"/>
 			<RaiseUserEvent Name="ToggleLoggedIn" />
 			<Change MainView.IsEnabled="true" />
-			<Set pages.Active="companypage" />
+			<Set pages.Active="companyselect" />
 		</WhileTrue>
 
 		<!-- Log in view -->
@@ -80,11 +81,11 @@
 
 			<Grid Row="1" Padding="0,20" RowCount="2" Columns="auto,1*" Height="160">
 				<Image     Row="0" Column="0" File="Assets/user_icon.png" Width="20" Height="20" Margin="10,0,30,0" Alignment="Left"/>
-				<TextInput Value="{username}" Row="0" Column="1" PlaceholderText="Brukernavn" PlaceholderColor="#999" TextColor="#fff" Alignment="CenterLeft"/>
+				<TextInput Value="{username}" Row="0" Column="1" PlaceholderText="Brukernavn" PlaceholderColor="#ccc" TextColor="#fff" Alignment="CenterLeft"/>
 				<Rectangle Row="0" Column="0" Alignment="Bottom" ColumnSpan="2" Height="1" Fill="#fff"/>
 
 				<Image     Row="1" Column="0" File="Assets/password_icon.png" Width="20" Height="20" Margin="10,0,30,0" Alignment="Left"/>
-				<TextInput Value="{password}" Row="1" Column="1" PlaceholderText="Passord" PlaceholderColor="#999" TextColor="#fff" Alignment="CenterLeft"/>
+				<TextInput Value="{password}" Row="1" Column="1" PlaceholderText="Passord" PlaceholderColor="#ccc" TextColor="000" Alignment="CenterLeft"/>
 				<Rectangle Row="1" Column="0" Alignment="Bottom" ColumnSpan="2" Height="1" Fill="#fff"/>
 			</Grid>
 

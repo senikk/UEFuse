@@ -1,8 +1,7 @@
 var Observable = require("FuseJS/Observable");
-var LocalNotify = require("FuseJS/LocalNotifications");
 
-var username = Observable("senikk");
-var password = Observable("grok2Zul_");
+var username = Observable("");
+var password = Observable("");
 var companies = Observable();
 var logedin = Observable(false);
 var page = Observable('');
@@ -62,7 +61,6 @@ function ueCompanies(callback) {
   				} else {
   					c['LogoUrl'] = '';
   				}
-  				console.log(JSON.stringify(c));
   				companies.add(c);	  
   				
   				// last one
@@ -80,16 +78,17 @@ function login(arg) {
 	ueSignIn(function() {
 		logedin.value = true;
 	});
+
+	//companies.add({Name: 'Test'});
+	//logedin.value = true;
+	//page.value = "companyselect";
 }
 
 function companySelected(event) {
 	var company = event.data;
 	companykey = company.Key;
 
-	page.value = "somethingpage";
-	LocalNotify.now("Boom!", company.Name, "payload", true);
-
-	console.log(company.Name);
+	page.value = "timeline";
 }
 
 module.exports = {

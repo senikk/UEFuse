@@ -1,28 +1,15 @@
-<Panel>
-	<DockPanel ux:Class="CompanyItem" Height="80" Margin="1" Background="#fff" Padding="15,20" Clicked="{companySelected}">
-		<Image Width="50" Height="50" Dock="Left" Url="{LogoUrl}" />
-		<Grid RowCount="2" Margin="40,0">
-			<Text Value="{Name}" />
-			<StackPanel Orientation="Horizontal">
-				<Text Value="Org.nr." Color="#999" FontSize="11" />
-				<Text Value="{Settings.OrganizationNumber}" Color="#999" FontSize="11" />
-			</StackPanel>
-		</Grid>
-	</DockPanel>
-
-	<DockPanel ux:Class="CompanySelect">
-		<Grid RowCount="2" Rows="0.5*,auto">
-			<Image File="Assets/ue.png" Width="150" Row="0"/>
-			<Text Value="Velg firma" Color="#fff" Margin="2" FontSize="12" />
-			<ScrollView>
-				<DockPanel Background="#ddd" Row="1">
-					<StackPanel>
-						<Each Items="{companies}">
-							<CompanyItem />
-						</Each>
-					</StackPanel>
-				</DockPanel>
-			</ScrollView>
-		</Grid>
-	</DockPanel>
-</Panel>
+<DockPanel ux:Class="CompanySelect">
+	<Grid RowCount="2" Rows="0.5*,auto">
+		<Image File="Assets/ue.png" Width="150" Row="0"/>
+		<Text Value="Velg firma" Color="#fff" Margin="2" FontSize="12" />
+		<ScrollView>
+			<DockPanel Background="#ddd" Row="1">
+				<StackPanel>
+					<Each Items="{companies}">
+						<CompanyItem />
+					</Each>
+				</StackPanel>
+			</DockPanel>
+		</ScrollView>
+	</Grid>
+</DockPanel>

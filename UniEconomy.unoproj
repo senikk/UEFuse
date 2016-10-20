@@ -2,10 +2,9 @@
   "RootNamespace":"",
   "Packages": [
     "Fuse",
-    "FuseJS",
-    "Fuse.LocalNotifications"
+    "FuseJS"
   ],
   "Includes": [
-    "*"
+  	"*"
   ]
 }

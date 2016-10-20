@@ -1,0 +1,12 @@
+<DockPanel ux:Class="EconomyTimeline">
+	<ScrollView>
+		<StackPanel Background="#ddd">
+			<StackPanel Background="#e6e600">
+				<Text FontSize="44.0" Color="#000">God sommer!:)</Text>
+			</StackPanel>
+			<Each Items="{timeline}">
+				<TimelineItem />
+			</Each>
+		</StackPanel>
+	</ScrollView>
+</DockPanel>

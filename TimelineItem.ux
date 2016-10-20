@@ -1,0 +1,8 @@
+<Panel ux:Class="TimelineItem" ux:Name="TimelineItem" Height="80" Margin="1" Background="#fff" Padding="5,5">
+	<StackPanel Orientation="Horizontal">
+		<Text Value="T" Color="#343f51" FontSize="30" Padding="10" />
+		<Text Value="Tilbud" FontSize="15" />
+		<Text Value="{Number}" FontSize="15" />
+		<Text Value="1000 NOK" FontSize="20" Dock="Right" Alignment="CenterRight" />
+	</StackPanel>
+</Panel>
